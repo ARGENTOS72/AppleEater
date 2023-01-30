@@ -668,6 +668,9 @@ int main() {
                     DrawText(TextFormat("%s %02d:%02d:%02d", ora.text, timeInfo->tm_hour, timeInfo->tm_min, timeInfo->tm_sec), ora.x, ora.y, ora.fontSize, ora.color);
                     DrawText(TextFormat("%s %07d", score.text, punteggio), score.x, score.y, score.fontSize, score.color);
 
+                    if (punteggio >= APPLE_LENGTH)
+                        currentScreen = WON;
+
                     for (i = 0; i < APPLE_LENGTH; i++) {
                         if (apples[i].eatenTime < 300)
                             DrawTextureRec(apples[i].texture, textureRectangle[i], (Vector2) {apples[i].x, apples[i].y}, apples[i].tint);
@@ -763,9 +766,6 @@ int main() {
                     }
 
                     DrawTextureRec(android.texture, androidRectangleTexture, (Vector2) {android.x, android.y}, android.tint);
-
-                    if (punteggio >= APPLE_LENGTH)
-                        currentScreen = WON;
 
                     break;
 
