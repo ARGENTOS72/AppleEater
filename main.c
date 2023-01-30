@@ -388,6 +388,9 @@ int main() {
                 androidRectangle.x = android.x;
                 androidRectangle.y = android.y;
 
+                if (punteggio >= APPLE_LENGTH)
+                    currentScreen = WON;
+
                 break;
 
             case SETTINGS:;
@@ -667,9 +670,6 @@ int main() {
                     timeInfo = localtime(&currentTime);
                     DrawText(TextFormat("%s %02d:%02d:%02d", ora.text, timeInfo->tm_hour, timeInfo->tm_min, timeInfo->tm_sec), ora.x, ora.y, ora.fontSize, ora.color);
                     DrawText(TextFormat("%s %07d", score.text, punteggio), score.x, score.y, score.fontSize, score.color);
-
-                    if (punteggio >= APPLE_LENGTH)
-                        currentScreen = WON;
 
                     for (i = 0; i < APPLE_LENGTH; i++) {
                         if (apples[i].eatenTime < 300)
